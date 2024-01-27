@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
 import json
 import random
+from services.movie_descriptions import Chat
 from services.movie_prompts import LLM
 
 app = Flask(__name__)
@@ -11,15 +12,30 @@ CORS(app)
 def hello_world():
     return json.dumps({"text": "Backend is running!"})
 
-@app.route("/get-movie", methods=["GET"])
+# need to change to POST
+@app.route("/get-movie", methods=["GET", "POST"])
 def get_movie():
-    year = random.randint(1997, 2005)
-    llm = LLM({"year": year})
-    movies = llm.parse_response()
-    i = random.randint(0, 9)
-    
-    print(json.dumps({"text": movies[i]}))
-    return json.dumps({"text": movies[i]})
+    if request.method == "POST":
+        data = request.get_json()
+        year = data.get("year")
+
+        if year == None:
+            return json.dumps({"error": "year not provided"})
+   
+        llm = LLM({"year": year})
+        movies = llm.parse_response()
+        i = random.randint(0, len(movies) - 1)
+        print("bilal is here")
+        print(i)
+        
+        new_data = {"movie_name": movies[i], "year": year}
+        cohere_chat = Chat(new_data)
+
+        fact = cohere_chat.ask_cohere_movie_fact()
+        json_payload = {"movie_name": movies[i], "year": year, "trivia": fact}
+
+        print(json.dumps(json_payload))
+        return json.dumps(json_payload)
 
 if __name__ == "__main__":
     app.run(debug=True)
