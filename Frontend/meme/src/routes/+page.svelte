@@ -39,12 +39,27 @@
 
 
 <head>
-    <title>Nostalgia</title>
+    <title>NostalgAI</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css" />
 </head>
 <body>
-
+    <div class="window">
+        <div class="title-bar">
+          <button aria-label="Close" class="close"></button>
+          <h1 class="title">Welcome To NostalgAI</h1>
+          <button aria-label="Resize" class="resize"></button>
+        </div>
+        <div class="details-bar">
+          <span>Revive</span>
+          <span>The</span>
+          <span>Past</span>
+        </div>
+      
+        <div class="window-pane">
+          Find a nostlagic movie from 1980 to 2015!
+        </div>
+      </div>
     <div class="window">
         <div class="title-bar"> 
             <button aria-label="Close" class="close"></button>
