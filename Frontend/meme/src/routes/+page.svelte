@@ -1,11 +1,49 @@
-<script>
-    // logic goes here
+<script lang="ts">
+    import { onMount } from 'svelte';
 
+    let apiURL = 'http://127.0.0.1:5000';
+    let movieName = '';
+    let year = '';
+    let trivia = '';
+
+    function getData(): void {
+
+        const yearData = {
+        
+        };
+        // Make a simple POST request to the Flask API endpoint
+        fetch(apiURL + '/get-movie', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({"year": document.getElementById('text_find').value})
+            
+        })
+            .then((response) => response.json())
+            .then((data) => {
+            movieName = data.movie_name;
+            year = data.year;
+            trivia = data.trivia;
+            console.log(data);
+            // Show the data in the window-pane
+            const windowPane = document.querySelector('.window-pane');
+            windowPane.innerHTML = `Movie name: ${movieName}<br><br>Year: ${year}<br><br>Trivia: ${trivia}`;
+        })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    // onMount(() => {
+    //     getData();
+    // });
 </script>
 
 
 <head>
-    <title>System.css Starter</title>
+    <title>Nostalgia</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css" />
 </head>
@@ -21,12 +59,12 @@
         
         <div class="modeless-dialog">
             <section class="field-row" style="justify-content: flex-start">
-                <label for="text_find" class="modeless-text">Find:</label>
+                <label for="text_find" class="modeless-text">Enter year:</label>
                 <input id="text_find" type="text" style="width:100%;" placeholder="">
             </section>
             <section class="field-row" style="justify-content: flex-end">
-                <button class="btn">Cancel</button>
-                <button class="btn" style="width:95px;">Find</button>
+                <button class="btn" on:click={()=>console.log("Clicked")}>Cancel</button>
+                <button class="btn" style="width:95px;" on:click={getData}>Find</button>
             </section>
         </div>
     </div>
@@ -39,7 +77,7 @@
         <div class="separator"></div>
       
         <div class="window-pane">
-          Results will be shown here
+          
         </div>
       </div>
         
@@ -49,61 +87,4 @@
 
 <style>
     @import "src/lib/theme/style.css"
-    
-    /* .cohere {
-        width: 100%;
-        max-width: 1400px;
-        height: 1000px;
-        margin: 2rem auto;
-        display: flex;
-        flex-direction: column;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        background: linear-gradient(135deg, #0000AA 0%, #000000 100%);
-    }
-    .container {
-        width: 100%;
-        max-width: 1400px;
-        height: 1000px;
-        margin: 2rem auto;
-        display: flex;
-        flex-direction: column;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        background: linear-gradient(135deg, #0000AA 0%, #000000 100%);
-    }
-
-    button {
-        width: 70px;
-        background: linear-gradient(135deg, #0000AA 0%, #55FFFF 100%);
-        color: white;
-        border: none;
-        border-radius: 25px;
-        padding: 10px 15px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    button:hover {
-        width: 100px;
-    }
-
-    .input {
-        padding: 10px;
-        background: linear-gradient(135deg, #0000AA 0%, #55FFFF 80%);
-    }
-
-    #cohere-input {
-        width: 100%;
-        padding: 10px;
-        margin-right: 10px;
-        border: none;
-        border-radius: 25px;
-        box-sizing: border-box;
-        overflow: scroll; 
-    } */
-
-    
 </style>
