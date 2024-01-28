@@ -9,7 +9,7 @@ RUN apk add gcc musl-dev && python3 -m pip install -r requirements.txt
 ADD . /backend/
 
 ENV FLASK_APP=api/app.py
-ENV FLASK_ENV=development
+ENV FLASK_ENV=production
 
 
 CMD flask run --host=0.0.0.0
