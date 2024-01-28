@@ -35,10 +35,6 @@
                 console.error('Error fetching data:', error);
             });
     }
-
-    // onMount(() => {
-    //     getData();
-    // });
 </script>
 
 
@@ -63,7 +59,6 @@
                 <input id="text_find" type="text" style="width:100%;" placeholder="">
             </section>
             <section class="field-row" style="justify-content: flex-end">
-                <button class="btn" on:click={()=>console.log("Clicked")}>Cancel</button>
                 <button class="btn" style="width:95px;" on:click={getData}>Find</button>
             </section>
         </div>
