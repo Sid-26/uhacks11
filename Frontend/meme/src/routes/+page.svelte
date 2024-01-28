@@ -29,7 +29,7 @@
             console.log(data);
             // Show the data in the window-pane
             const windowPane = document.querySelector('.result');
-            windowPane.innerHTML = `Movie name: ${movieName}<br><br>Year: ${year}<br><br>Trivia: ${trivia}`;
+            windowPane.innerHTML = `Movie name(s): ${movieName}<br><br>Year: ${year}<br><br>Trivia: ${trivia}`;
         })
             .catch((error) => {
                 console.error('Error fetching data:', error);
