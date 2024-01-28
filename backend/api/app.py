@@ -17,7 +17,8 @@ def hello_world():
 def get_movie():
     if request.method == "POST":
         data = request.get_json()
-        year = data.get("year")
+        print(data)
+        year = int(data.get("year"))
 
         if year == None:
             return json.dumps({"error": "year not provided"})
