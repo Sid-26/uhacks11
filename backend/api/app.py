@@ -2,8 +2,8 @@ from flask import Flask, request
 from flask_cors import CORS
 import json
 import random
-from services.movie_descriptions import Chat
-from services.movie_prompts import LLM
+from .services.movie_descriptions import Chat
+from .services.movie_prompts import LLM
 
 app = Flask(__name__)
 CORS(app)
