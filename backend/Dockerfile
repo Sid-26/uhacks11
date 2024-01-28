@@ -11,7 +11,8 @@ ADD . /backend/
 ENV FLASK_APP=api/app.py
 ENV FLASK_ENV=development
 
+
 CMD flask run --host=0.0.0.0
 
-EXPOSE 5000
+EXPOSE 80
 
