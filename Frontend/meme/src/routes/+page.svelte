@@ -28,7 +28,7 @@
             trivia = data.trivia;
             console.log(data);
             // Show the data in the window-pane
-            const windowPane = document.querySelector('.window-pane');
+            const windowPane = document.querySelector('.result');
             windowPane.innerHTML = `Movie name: ${movieName}<br><br>Year: ${year}<br><br>Trivia: ${trivia}`;
         })
             .catch((error) => {
@@ -86,7 +86,7 @@
         </div>
         <div class="separator"></div>
       
-        <div class="window-pane">
+        <div class="window-pane" id="result">
           
         </div>
       </div>
