@@ -14,5 +14,5 @@ ENV FLASK_ENV=production
 
 CMD flask run --host=0.0.0.0
 
-EXPOSE 80
+EXPOSE 5000
 
