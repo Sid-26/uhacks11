@@ -86,7 +86,7 @@
         </div>
         <div class="separator"></div>
       
-        <div class="window-pane" id="result">
+        <div class="result">
           
         </div>
       </div>

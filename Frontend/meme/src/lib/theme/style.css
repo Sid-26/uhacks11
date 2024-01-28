@@ -333,6 +333,14 @@ h2 {
   letter-spacing: -0.025em;
   /*margin-bottom: 1rem;*/
 }
+.result {
+  overflow-y: auto;
+  height: 100%;
+  padding: 1rem 2rem;
+  font-size: 18px;
+  letter-spacing: -0.025em;
+  /*margin-bottom: 1rem;*/
+}
 .window-pane::-webkit-scrollbar {
   width: 22px;
   background-color: var(--primary);
