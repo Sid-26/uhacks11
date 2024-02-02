@@ -1,4 +1,4 @@
-# UofT Hack 11
+# UofT Hack 11 - NostalgAI
 Team: [Siddhant Das](https://github.com/Sid-26), [Sheida Ebrahimi](https://github.com/Sheida-Ebrahimi)
 
 ## Overview
